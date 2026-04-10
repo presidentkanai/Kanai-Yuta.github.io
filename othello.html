@@ -11,14 +11,17 @@
     <div class="game-container">
         <h1>Web Othello</h1>
         
+        <div class="game-mode">
+            <button id="btn-1p" class="mode-btn active" onclick="setMode(true)">1P (vs AI)</button>
+            <button id="btn-2p" class="mode-btn" onclick="setMode(false)">2P (Local)</button>
+        </div>
+        
         <div class="status-board">
             <div id="black-status" class="player-status active">
                 <div class="disc-icon black-disc"></div>
                 <span id="black-score">2</span>
             </div>
-            
             <div id="turn-message">黒の番です</div>
-            
             <div id="white-status" class="player-status">
                 <span id="white-score">2</span>
                 <div class="disc-icon white-disc"></div>
