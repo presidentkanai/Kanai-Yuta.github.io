@@ -2,40 +2,25 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Othello | Yuta Kanai</title>
+    <title>Deep Learning Othello | Yuta Kanai</title>
     <link rel="stylesheet" href="othello.css">
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
 </head>
 <body>
-
     <div class="game-container">
-        <h1>Web Othello</h1>
-        
-        <div class="game-mode">
-            <button id="btn-1p" class="mode-btn active" onclick="setMode(true)">1P (vs AI)</button>
-            <button id="btn-2p" class="mode-btn" onclick="setMode(false)">2P (Local)</button>
-        </div>
-        
+        <h1>Deep Learning Othello</h1>
+        <div id="status">AIモデルをロード中...</div>
         <div class="status-board">
-            <div id="black-status" class="player-status active">
-                <div class="disc-icon black-disc"></div>
-                <span id="black-score">2</span>
-            </div>
-            <div id="turn-message">黒の番です</div>
-            <div id="white-status" class="player-status">
-                <span id="white-score">2</span>
-                <div class="disc-icon white-disc"></div>
-            </div>
+            <div id="black-score">黒: 2</div>
+            <div id="turn-display">黒の番</div>
+            <div id="white-score">白: 2</div>
         </div>
-
         <div id="board" class="board"></div>
-
         <div class="controls">
-            <button class="action-btn" onclick="initGame()">リスタート</button>
-            <a href="index.html" class="action-btn back-btn">ポートフォリオに戻る</a>
+            <button class="action-btn" onclick="location.reload()">リセット</button>
+            <a href="index.html" class="action-btn back-btn">戻る</a>
         </div>
     </div>
-
-    <script src="othello.js"></script>
+    <script src="othello_dl.js"></script>
 </body>
 </html>
