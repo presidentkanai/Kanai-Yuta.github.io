@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | 自己紹介</title>
+    <title>Yuta Kanai | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
     <header>
-        <h1>My Portfolio</h1>
+        <h1>Yuta Kanai</h1>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" class="nav-btn" onclick="launchFirework()">About</a></li>
+                <li><a href="#dreams" class="nav-btn" onclick="launchFirework()">Dreams</a></li>
+                <li><a href="#skills" class="nav-btn" onclick="launchFirework()">Skills</a></li>
+                <li><a href="#projects" class="nav-btn" onclick="launchFirework()">Projects</a></li>
+                <li><a href="#contact" class="nav-btn" onclick="launchFirework()">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -23,8 +25,21 @@
     <main>
         <section id="about">
             <h2>About Me</h2>
-            <p>こんにちは！現在大学で技術とビジネスについて学んでいる学生です。</p>
-            <p>モータースポーツへの情熱と、テクノロジーを掛け合わせた新しい価値創造に興味があります。2027年の卒業に向けて、日々プログラミングやビジネススキルを磨いています。</p>
+            <div class="profile-info">
+                <p><strong>Name:</strong> 金井 優太 (Yuta Kanai)</p>
+                <p><strong>University:</strong> 千葉工業大学</p>
+                <p><strong>Faculty:</strong> 工学部</p>
+                <p><strong>Department:</strong> 情報通信システム工学科</p>
+            </div>
+            <p>情報通信システム工学を学びながら、テクノロジーとビジネスの可能性を追求しています。</p>
+        </section>
+
+        <section id="dreams">
+            <h2>Future Goals</h2>
+            <ul class="dream-list">
+                <li>世界で有名な会社を築くこと！</li>
+                <li>Formula One に出場できるモータースポーツチームを作成すること！</li>
+            </ul>
         </section>
 
         <section id="skills">
@@ -44,22 +59,46 @@
                 <h3>車両確認証NFT プロトタイプ</h3>
                 <p>ブロックチェーン技術を活用した、車両情報の透明性を高めるNFTプロジェクトを共同開発しました。</p>
             </div>
-            <div class="project-card">
-                <h3>Coming Soon...</h3>
-                <p>現在はモータースポーツ関連のビジネスモデルを検討中です。</p>
-            </div>
         </section>
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>お気軽にSNSやメールでご連絡ください。</p>
-            <a href="https://github.com/あなたのユーザー名" class="btn">GitHub</a>
+            <p>お気軽にSNSやGitHubからご連絡ください。</p>
+            <a href="https://github.com/あなたのユーザー名" class="nav-btn" onclick="launchFirework()">GitHub</a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 My Portfolio Site</p>
+        <p>&copy; 2026 Yuta Kanai</p>
     </footer>
 
+    <script>
+        function launchFirework() {
+            var duration = 1.5 * 1000; // 1.5秒間花火が上がる
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                // 画面の左右から花火を打ち上げる
+                confetti(Object.assign({}, defaults, { particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+                }));
+                confetti(Object.assign({}, defaults, { particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+                }));
+            }, 250);
+        }
+    </script>
 </body>
 </html>
