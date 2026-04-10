@@ -9,9 +9,9 @@ body {
 }
 
 header {
-    background: #1a1a1a; /* 少しスタイリッシュな黒系に */
+    background: #1a1a1a; /* スタイリッシュな黒系 */
     color: #fff;
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 2rem 0; /* 下部の余白を少し広めに */
     text-align: center;
 }
 
@@ -26,7 +26,7 @@ nav ul {
     margin-top: 15px;
 }
 
-/* ぷくっと浮き出るボタンのデザイン */
+/* ★ ぷくっと浮き出るボタンのデザイン */
 .nav-btn {
     display: inline-block;
     background: #333;
@@ -41,17 +41,41 @@ nav ul {
     border: none;
 }
 
-/* ★ カーソルが触れた時（ホバーエフェクト） */
+/* カーソルが触れた時（ホバーエフェクト） */
 .nav-btn:hover {
     transform: translateY(-5px) scale(1.05); /* 上に5px移動して、少し拡大 */
     box-shadow: 0 10px 15px rgba(0,0,0,0.4); /* 影を大きくして浮遊感を出す */
-    background: #e74c3c; /* F1を連想させる情熱的な赤色に変化！ */
+    background: #e74c3c; /* F1を連想させる情熱的な赤色に変化 */
 }
 
-/* ★ ボタンをクリックした瞬間の動き */
+/* ボタンをクリックした瞬間の動き */
 .nav-btn:active {
     transform: translateY(0) scale(1); /* 元の高さに戻る */
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* ★ スピード調整スライダーのデザイン */
+.controls {
+    margin-top: 25px;
+    color: #fff;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+#speedRange {
+    cursor: pointer;
+    vertical-align: middle;
+    accent-color: #e74c3c; /* スライダーの丸い部分を赤色に */
+}
+
+#speedValue {
+    display: inline-block;
+    width: 30px;
+    text-align: right; /* 数字を右揃えに */
+    margin-left: 5px;
 }
 
 main {
