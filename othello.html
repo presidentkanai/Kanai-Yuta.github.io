@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Othello | Yuta Kanai</title>
+    <link rel="stylesheet" href="othello.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Web Othello</h1>
+        
+        <div class="status-board">
+            <div id="black-status" class="player-status active">
+                <div class="disc-icon black-disc"></div>
+                <span id="black-score">2</span>
+            </div>
+            
+            <div id="turn-message">黒の番です</div>
+            
+            <div id="white-status" class="player-status">
+                <span id="white-score">2</span>
+                <div class="disc-icon white-disc"></div>
+            </div>
+        </div>
+
+        <div id="board" class="board"></div>
+
+        <div class="controls">
+            <button class="action-btn" onclick="initGame()">リスタート</button>
+            <a href="index.html" class="action-btn back-btn">ポートフォリオに戻る</a>
+        </div>
+    </div>
+
+    <script src="othello.js"></script>
+</body>
+</html>
