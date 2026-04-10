@@ -198,4 +198,140 @@ footer {
         opacity: 0;
         visibility: hidden; /* 後ろのボタン等を押せるように完全に隠す */
     }
+}    display: inline-block;
+}
+
+#speedRange {
+    cursor: pointer;
+    vertical-align: middle;
+    accent-color: #e74c3c; /* スライダーの丸い部分を赤色に */
+}
+
+#speedValue {
+    display: inline-block;
+    width: 30px;
+    text-align: right;
+    margin-left: 5px;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    background: #fff;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+/* プロフィール情報 */
+.profile-info p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+/* 夢のリスト */
+.dream-list {
+    padding-left: 20px;
+}
+
+.dream-list li {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    list-style-type: '🏁 '; /* リストのマークをチェッカーフラッグに */
+}
+
+/* スキルタグのデザイン */
+.skill-tags span {
+    display: inline-block;
+    background: #e1e8ed;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+/* プロジェクトカードのデザイン */
+.project-card {
+    border-left: 5px solid #e74c3c;
+    background: #f9f9f9;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 0 8px 8px 0;
+}
+
+/* 連絡先セクションのボタンを綺麗に並べる設定 */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* =========================================
+   オープニングアニメーションの設定
+   ========================================= */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #1a1a1a; /* サイトのヘッダーと同じ黒背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 最前面に表示する */
+    overflow: hidden;
+    /* 2.5秒後に背景自体をフェードアウトして消す */
+    animation: fadeOutIntro 0.5s ease 2.5s forwards; 
+}
+
+.intro-text {
+    color: #fff;
+    /* 画面サイズに合わせて文字の大きさを自動調整 */
+    font-size: clamp(2.5rem, 8vw, 6rem); 
+    font-weight: 900;
+    letter-spacing: 10px;
+    font-style: italic; /* スピード感を出すための斜体 */
+    white-space: nowrap;
+    /* 右から入って左に抜ける動き（2秒間） */
+    animation: slideText 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 文字のスライドの動き（キーフレーム） */
+@keyframes slideText {
+    0%   { transform: translateX(100vw); opacity: 0; }
+    20%  { transform: translateX(0); opacity: 1; } /* 画面中央でストップ */
+    80%  { transform: translateX(0); opacity: 1; } /* しばらく見せる */
+    100% { transform: translateX(-100vw); opacity: 0; } /* 左へ一気に駆け抜ける */
+}
+
+/* 背景を透明にして操作できるようにする設定 */
+@keyframes fadeOutIntro {
+    to {
+        opacity: 0;
+        visibility: hidden; /* 後ろのボタン等を押せるように完全に隠す */
+    }
 }
