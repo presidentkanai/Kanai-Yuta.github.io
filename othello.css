@@ -1,0 +1,147 @@
+/* 基本設定 */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0b0c10;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    color: #ff2800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+/* ステータスボード（スコアとターン） */
+.status-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.player-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.player-status.active {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#turn-message {
+    font-weight: bold;
+    color: #66fcf1;
+    font-size: 1.2rem;
+}
+
+/* オセロ盤 */
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    gap: 2px;
+    background-color: #ff2800; /* マスの隙間が赤く光るサイバー仕様 */
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(255, 40, 0, 0.3);
+    margin: 0 auto 20px auto;
+    width: max-content;
+}
+
+.cell {
+    background-color: #1f2833;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: #2b3745;
+}
+
+/* 石を置ける場所のハイライト */
+.cell.hint::after {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: rgba(102, 252, 241, 0.5); /* サイバーブルー */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(102, 252, 241, 0.8);
+}
+
+/* 石のデザイン */
+.disc {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.disc.black { background-color: #111; border: 2px solid #333; }
+.disc.white { background-color: #eee; border: 2px solid #fff; box-shadow: 0 0 10px rgba(255,255,255,0.8); }
+
+.disc-icon { width: 20px; height: 20px; border-radius: 50%; }
+.black-disc { background-color: #111; border: 1px solid #333; }
+.white-disc { background-color: #eee; box-shadow: 0 0 5px rgba(255,255,255,0.8); }
+
+/* ボタン類 */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.action-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #ff2800;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.action-btn:hover {
+    background: #ff2800;
+    box-shadow: 0 0 15px rgba(255, 40, 0, 0.5);
+}
+
+.back-btn {
+    border-color: #66fcf1;
+}
+
+.back-btn:hover {
+    background: #66fcf1;
+    color: #0b0c10;
+    box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+}
