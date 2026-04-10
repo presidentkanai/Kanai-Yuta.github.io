@@ -11,7 +11,7 @@ body {
 header {
     background: #1a1a1a; /* スタイリッシュな黒系 */
     color: #fff;
-    padding: 1.5rem 0 2rem 0; /* 下部の余白を少し広めに */
+    padding: 1.5rem 0 2rem 0;
     text-align: center;
 }
 
@@ -26,7 +26,7 @@ nav ul {
     margin-top: 15px;
 }
 
-/* ★ ぷくっと浮き出るボタンのデザイン */
+/* ぷくっと浮き出るボタンのデザイン */
 .nav-btn {
     display: inline-block;
     background: #333;
@@ -54,7 +54,7 @@ nav ul {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* ★ スピード調整スライダーのデザイン */
+/* スピード調整スライダーのデザイン */
 .controls {
     margin-top: 25px;
     color: #fff;
@@ -74,7 +74,7 @@ nav ul {
 #speedValue {
     display: inline-block;
     width: 30px;
-    text-align: right; /* 数字を右揃えに */
+    text-align: right;
     margin-left: 5px;
 }
 
@@ -93,7 +93,7 @@ section {
 }
 
 h2 {
-    border-bottom: 2px solid #e74c3c; /* 見出しの下線も赤に変更 */
+    border-bottom: 2px solid #e74c3c;
     padding-bottom: 0.5rem;
     color: #1a1a1a;
 }
@@ -135,6 +135,15 @@ h2 {
     padding: 1.5rem;
     margin-top: 1rem;
     border-radius: 0 8px 8px 0;
+}
+
+/* 連絡先セクションのボタンを綺麗に並べる設定 */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 footer {
