@@ -9,15 +9,12 @@
 </head>
 <body>
 
-    <canvas id="particle-canvas"></canvas>
-
     <div id="intro-screen">
         <div class="intro-text">KANAI YUTA</div>
     </div>
 
-    <header class="reveal">
+    <header>
         <h1>Yuta Kanai</h1>
-        <p class="subtitle">Motorsport × Web3 Business</p>
         <nav>
             <ul>
                 <li><a href="#about" class="nav-btn" onclick="launchFirework()">About</a></li>
@@ -36,7 +33,7 @@
     </header>
 
     <main>
-        <section id="about" class="reveal glass-card">
+        <section id="about">
             <h2>About Me</h2>
             <div class="profile-info">
                 <p><strong>Name:</strong> 金井 優太 (Yuta Kanai)</p>
@@ -47,7 +44,7 @@
             <p>情報通信システム工学を学びながら、テクノロジーとビジネスの可能性を追求しています。</p>
         </section>
 
-        <section id="dreams" class="reveal glass-card">
+        <section id="dreams">
             <h2>Future Goals</h2>
             <ul class="dream-list">
                 <li>世界で有名な会社を築くこと！</li>
@@ -55,7 +52,7 @@
             </ul>
         </section>
 
-        <section id="skills" class="reveal glass-card">
+        <section id="skills">
             <h2>Skills</h2>
             <div class="skill-tags">
                 <span>Solidity</span>
@@ -66,7 +63,7 @@
             </div>
         </section>
 
-        <section id="projects" class="reveal glass-card">
+        <section id="projects">
             <h2>Projects</h2>
             <div class="project-card">
                 <h3>車両確認証NFT プロトタイプ</h3>
@@ -74,7 +71,7 @@
             </div>
         </section>
 
-        <section id="contact" class="reveal glass-card">
+        <section id="contact">
             <h2>Contact</h2>
             <p>お気軽に各SNSからご連絡ください！</p>
             <div class="contact-links">
@@ -85,133 +82,71 @@
         </section>
     </main>
 
-    <footer class="reveal">
+    <footer>
         <p>&copy; 2026 Yuta Kanai</p>
     </footer>
 
     <script>
         /* =========================================
-           0. ページ読み込み時のスクロール位置修正
+           ページ読み込み時のスクロール位置修正機能
            ========================================= */
-        // ブラウザがスクロール位置を記憶する機能をオフにする
+        // ブラウザが前回スクロールした位置を記憶する機能をオフにする
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
-        // 強制的に一番上にスクロールさせる
+        // ページが読み込まれた瞬間に強制的に一番上にスクロールさせる
         window.scrollTo(0, 0);
 
         // オープニングアニメーション中（2.5秒間）はスクロール操作を禁止する
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
-            // アニメーション終了後にスクロールを許可
+            // アニメーション終了後（2.5秒後）にスクロールを許可する
             document.body.style.overflowY = 'auto';
             document.body.style.overflowX = 'hidden';
         }, 2500);
 
         /* =========================================
-           1. スクロール連動アニメーション (要素を浮き上がらせる)
+           既存の機能（スライダー・花火）
            ========================================= */
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active'); // 画面に入ったらactiveクラスを追加
-                }
-            });
-        }, { threshold: 0.1 }); // 要素が10%見えたら発動
-        
-        reveals.forEach(reveal => {
-            observer.observe(reveal);
-        });
-
-        /* =========================================
-           2. 花火とスライダーの設定
-           ========================================= */
+        // スライダーの数値を横に表示させる処理
         const speedRange = document.getElementById('speedRange');
         const speedValue = document.getElementById('speedValue');
         speedRange.addEventListener('input', () => {
             speedValue.textContent = speedRange.value;
         });
 
+        // 花火を打ち上げる処理
         function launchFirework() {
+            // スライダーから現在のスピード値を取得
             const currentSpeed = parseInt(document.getElementById('speedRange').value);
-            var duration = 1.5 * 1000;
-            var animationEnd = Date.now() + duration;
-            var defaults = { startVelocity: currentSpeed, spread: 360, ticks: 60, zIndex: 1000 };
 
-            function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+            var duration = 1.5 * 1000; // 1.5秒間
+            var animationEnd = Date.now() + duration;
+            // startVelocity にスライダーの値を設定
+            var defaults = { startVelocity: currentSpeed, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
 
             var interval = setInterval(function() {
                 var timeLeft = animationEnd - Date.now();
-                if (timeLeft <= 0) return clearInterval(interval);
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
                 var particleCount = 50 * (timeLeft / duration);
                 
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                // 画面の左右から打ち上げ
+                confetti(Object.assign({}, defaults, { particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+                }));
+                confetti(Object.assign({}, defaults, { particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+                }));
             }, 250);
         }
-
-        /* =========================================
-           3. 背景の動くパーティクル（幾何学模様）
-           ========================================= */
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x; this.y = y;
-                this.directionX = directionX; this.directionY = directionY;
-                this.size = size; this.color = color;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-                this.x += this.directionX;
-                this.y += this.directionY;
-                this.draw();
-            }
-        }
-
-        function init() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let directionX = (Math.random() * 2) - 1;
-                let directionY = (Math.random() * 2) - 1;
-                let color = Math.random() > 0.8 ? '#ff2800' : 'rgba(255,255,255,0.2)';
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = innerWidth;
-            canvas.height = innerHeight;
-            init();
-        });
-
-        init();
-        animate();
     </script>
 </body>
 </html>
