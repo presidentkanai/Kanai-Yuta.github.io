@@ -1,201 +1,193 @@
-/* 基本設定 */
+/* =========================================
+   基本設定 (ダークモード仕様)
+   ========================================= */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f4f7f6;
-}
-
-header {
-    background: #1a1a1a; /* スタイリッシュな黒系 */
-    color: #fff;
-    padding: 1.5rem 0 2rem 0;
-    text-align: center;
-}
-
-/* ナビゲーションメニューの横並び設定 */
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px; /* ボタン同士の隙間 */
-    margin-top: 15px;
-}
-
-/* ぷくっと浮き出るボタンのデザイン */
-.nav-btn {
-    display: inline-block;
-    background: #333;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 25px;
-    border-radius: 30px; /* 角を丸くする */
-    transition: all 0.3s ease; /* アニメーションを滑らかに */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* 初期状態の影 */
-    cursor: pointer;
-    border: none;
-}
-
-/* カーソルが触れた時（ホバーエフェクト） */
-.nav-btn:hover {
-    transform: translateY(-5px) scale(1.05); /* 上に5px移動して、少し拡大 */
-    box-shadow: 0 10px 15px rgba(0,0,0,0.4); /* 影を大きくして浮遊感を出す */
-    background: #e74c3c; /* F1を連想させる情熱的な赤色に変化 */
-}
-
-/* ボタンをクリックした瞬間の動き */
-.nav-btn:active {
-    transform: translateY(0) scale(1); /* 元の高さに戻る */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-/* スピード調整スライダーのデザイン */
-.controls {
-    margin-top: 25px;
-    color: #fff;
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px 20px;
-    border-radius: 20px;
-    display: inline-block;
-}
-
-#speedRange {
-    cursor: pointer;
-    vertical-align: middle;
-    accent-color: #e74c3c; /* スライダーの丸い部分を赤色に */
-}
-
-#speedValue {
-    display: inline-block;
-    width: 30px;
-    text-align: right;
-    margin-left: 5px;
-}
-
-main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-section {
-    background: #fff;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-h2 {
-    border-bottom: 2px solid #e74c3c;
-    padding-bottom: 0.5rem;
-    color: #1a1a1a;
-}
-
-/* プロフィール情報 */
-.profile-info p {
-    margin: 5px 0;
-    font-size: 1.1rem;
-}
-
-/* 夢のリスト */
-.dream-list {
-    padding-left: 20px;
-}
-
-.dream-list li {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #1a1a1a;
-    margin-bottom: 10px;
-    list-style-type: '🏁 '; /* リストのマークをチェッカーフラッグに */
-}
-
-/* スキルタグのデザイン */
-.skill-tags span {
-    display: inline-block;
-    background: #e1e8ed;
-    padding: 8px 15px;
-    margin: 5px;
-    border-radius: 20px;
-    font-size: 0.95rem;
-    font-weight: bold;
-}
-
-/* プロジェクトカードのデザイン */
-.project-card {
-    border-left: 5px solid #e74c3c;
-    background: #f9f9f9;
-    padding: 1.5rem;
-    margin-top: 1rem;
-    border-radius: 0 8px 8px 0;
-}
-
-/* 連絡先セクションのボタンを綺麗に並べる設定 */
-.contact-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    font-size: 0.9rem;
-    color: #777;
+    color: #fff; /* 文字を白に */
+    /* 動かない美しいダークグラデーション背景に変更 */
+    background: linear-gradient(135deg, #0b0c10 0%, #1f2833 100%);
+    background-attachment: fixed; /* スクロールしても背景を固定する */
+    overflow-x: hidden;
 }
 
 /* =========================================
-   オープニングアニメーションの設定
+   オープニングアニメーション
    ========================================= */
 #intro-screen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #1a1a1a; /* サイトのヘッダーと同じ黒背景 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* 最前面に表示する */
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: #0b0c10;
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
     overflow: hidden;
-    /* 2.5秒後に背景自体をフェードアウトして消す */
     animation: fadeOutIntro 0.5s ease 2.5s forwards; 
 }
 
 .intro-text {
-    color: #fff;
-    /* 画面サイズに合わせて文字の大きさを自動調整 */
+    color: #ff2800; /* F1レッド */
     font-size: clamp(2.5rem, 8vw, 6rem); 
     font-weight: 900;
-    letter-spacing: 10px;
-    font-style: italic; /* スピード感を出すための斜体 */
+    letter-spacing: 15px;
+    font-style: italic;
     white-space: nowrap;
-    /* 右から入って左に抜ける動き（2秒間） */
+    text-shadow: 0 0 20px rgba(255, 40, 0, 0.5); /* グロウ効果 */
     animation: slideText 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* 文字のスライドの動き（キーフレーム） */
 @keyframes slideText {
     0%   { transform: translateX(100vw); opacity: 0; }
-    20%  { transform: translateX(0); opacity: 1; } /* 画面中央でストップ */
-    80%  { transform: translateX(0); opacity: 1; } /* しばらく見せる */
-    100% { transform: translateX(-100vw); opacity: 0; } /* 左へ一気に駆け抜ける */
+    20%  { transform: translateX(0); opacity: 1; }
+    80%  { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(-100vw); opacity: 0; }
+}
+@keyframes fadeOutIntro {
+    to { opacity: 0; visibility: hidden; }
 }
 
-/* 背景を透明にして操作できるようにする設定 */
-@keyframes fadeOutIntro {
-    to {
-        opacity: 0;
-        visibility: hidden; /* 後ろのボタン等を押せるように完全に隠す */
-    }
+/* =========================================
+   ヘッダーとナビゲーション
+   ========================================= */
+header {
+    padding: 4rem 0 2rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #66fcf1; /* サイバーブルー */
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+nav ul {
+    list-style: none; padding: 0; display: flex;
+    justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 20px;
+}
+
+/* ★ かっこいいネオンボタン */
+.nav-btn {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px); /* すりガラス効果 */
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: #ff2800;
+    border-color: #ff2800;
+    box-shadow: 0 0 15px #ff2800, 0 0 30px rgba(255, 40, 0, 0.5); /* 強く光る！ */
+    color: #fff;
+}
+
+.nav-btn:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 5px #ff2800;
+}
+
+/* スライダー */
+.controls {
+    margin-top: 25px; color: #c5c6c7; font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px; border-radius: 20px; display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+#speedRange { accent-color: #ff2800; }
+
+/* =========================================
+   メインコンテンツ (グラスモーフィズム)
+   ========================================= */
+main {
+    max-width: 800px; margin: 2rem auto; padding: 0 1rem;
+}
+
+/* 透けるガラスのようなカードデザイン */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+h2 {
+    border-bottom: 2px solid #ff2800;
+    padding-bottom: 0.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* プロフィール・夢 */
+.profile-info p { margin: 8px 0; font-size: 1.1rem; color: #c5c6c7; }
+.profile-info strong { color: #fff; }
+.dream-list { padding-left: 20px; }
+.dream-list li {
+    font-size: 1.2rem; font-weight: bold; color: #66fcf1;
+    margin-bottom: 15px; list-style-type: '🏁 ';
+}
+
+/* スキルタグ */
+.skill-tags span {
+    display: inline-block;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #66fcf1;
+    box-shadow: 0 0 5px rgba(102, 252, 241, 0.2);
+    padding: 8px 15px; margin: 5px; border-radius: 20px;
+    font-size: 0.95rem; font-weight: bold;
+}
+
+/* プロジェクトカード */
+.project-card {
+    border-left: 5px solid #ff2800;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1.5rem; margin-top: 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+.project-card h3 { margin-top: 0; color: #ff2800; }
+.project-card p { color: #c5c6c7; }
+
+/* 連絡先 */
+.contact-links {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 20px;
+}
+
+/* =========================================
+   スクロール連動アニメーションの動き
+   ========================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    text-align: center; padding: 2rem 0; font-size: 0.9rem; color: #777;
 }
