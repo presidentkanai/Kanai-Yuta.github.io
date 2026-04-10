@@ -89,15 +89,29 @@
 
     <script>
         /* =========================================
-           0. ページ読み込み時のスクロール位置修正
+           0. ページ読み込み時のスクロール位置修正（強力版）
            ========================================= */
+        // ブラウザのスクロール記憶をオフにする
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
+        
+        // 読み込み直後に一番上へ
         window.scrollTo(0, 0);
+        
+        // ページが完全に読み込まれた時にもう一度一番上へ
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
 
+        // アニメーション中はスクロールを禁止
         document.body.style.overflow = 'hidden';
+        
         setTimeout(() => {
+            // アニメーションが終わった瞬間に、確実にもう一度一番上へ固定する
+            window.scrollTo(0, 0);
+            
+            // スクロールを許可する
             document.body.style.overflowY = 'auto';
             document.body.style.overflowX = 'hidden';
         }, 2500);
