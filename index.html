@@ -91,6 +91,24 @@
 
     <script>
         /* =========================================
+           0. ページ読み込み時のスクロール位置修正
+           ========================================= */
+        // ブラウザがスクロール位置を記憶する機能をオフにする
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        // 強制的に一番上にスクロールさせる
+        window.scrollTo(0, 0);
+
+        // オープニングアニメーション中（2.5秒間）はスクロール操作を禁止する
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            // アニメーション終了後にスクロールを許可
+            document.body.style.overflowY = 'auto';
+            document.body.style.overflowX = 'hidden';
+        }, 2500);
+
+        /* =========================================
            1. スクロール連動アニメーション (要素を浮き上がらせる)
            ========================================= */
         const reveals = document.querySelectorAll('.reveal');
@@ -173,7 +191,6 @@
                 let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
                 let directionX = (Math.random() * 2) - 1;
                 let directionY = (Math.random() * 2) - 1;
-                // F1レッドとクールグレーのパーティクル
                 let color = Math.random() > 0.8 ? '#ff2800' : 'rgba(255,255,255,0.2)';
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
